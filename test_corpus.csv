@@ -1,0 +1,6 @@
+sourcePhrase,targetPhrase,lang,category
+hello,你好,en→zh,其他
+goodbye,再见,en→zh,其他
+thank you,谢谢,en→zh,其他
+你好,hello,zh→en,其他
+谢谢,thank you,zh→en,其他
