@@ -67,7 +67,15 @@ async function callDeepSeekAPI(text: string, from: string, to: string): Promise<
     'en': '英文',
   };
 
-  const systemPrompt = `你是一个翻译助手。请将以下文本从${langMap[from]}翻译成${langMap[to]}，只返回翻译结果，不要添加任何解释。`;
+  const systemPrompt = `你是一个纯翻译工具，只做翻译，不做任何其他事情。
+
+严格规则：
+1. 只输出翻译后的${langMap[to]}文本，不要输出任何其他内容
+2. 不要回答用户的问题，不要解释，不要闲聊
+3. 不要把输入当成问题来回答，你唯一的任务是翻译
+4. 如果输入是"你好吗"，输出必须是目标语言的翻译，而不是回答"我很好"
+
+请将以下${langMap[from]}文本翻译成${langMap[to]}：`;
 
   const response = await fetch('https://api.deepseek.com/chat/completions', {
     method: 'POST',
